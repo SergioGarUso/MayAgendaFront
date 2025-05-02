@@ -1,0 +1,8 @@
+<div class="citas-container">
+  <h2>Listado de Citas</h2>
+  <ul>
+    @for (cita of citas(); track cita.id) {
+      <li>{{ cita.cliente }} - {{ cita.fecha }}</li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,8 @@
+<div class="clientes-container">
+  <h2>Gestión de Clientes</h2>
+  <ul>
+    @for (cliente of clientes(); track cliente.id) {
+      <li>{{ cliente.nombre }}</li>
+    }
+  </ul>
+</div>

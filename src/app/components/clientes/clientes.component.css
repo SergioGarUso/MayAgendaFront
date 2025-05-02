@@ -1,0 +1,44 @@
+.clientes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.clientes-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.clientes-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.clientes-container li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  transition: background-color 0.3s ease;
+}
+
+.clientes-container li:hover {
+  background-color: #e0e0e0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

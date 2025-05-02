@@ -1,0 +1,10 @@
+<h2>Resumen del día</h2>
+
+<div class="cards">
+  @for (item of resumen(); track item.tipo) {
+    <div class="card">
+      <h3>{{ item.tipo }}</h3>
+      <p>{{ item.cantidad }}</p>
+    </div>
+  }
+</div>
