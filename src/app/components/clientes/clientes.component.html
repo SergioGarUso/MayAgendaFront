@@ -31,8 +31,8 @@
   <!-- Modal -->
   <div class="modal-backdrop" *ngIf="modalVisible()">
     <div class="modal">
-      <h2>{{ modalCliente()?.id === 0 ? 'Añadir Cliente' : 'Editar Cliente' }}</h2>
-      <form (ngSubmit)="guardarCliente()">
+      <h2>{{ modalCliente()?.id ? 'Editar Cliente' : 'Añadir Cliente' }}</h2>
+      <form (ngSubmit)="guardarCliente()" #clienteForm="ngForm">
         <label>Nombre:
           <input [(ngModel)]="modalCliente()!.nombre" name="nombre" required />
         </label>
@@ -43,7 +43,7 @@
           <input [(ngModel)]="modalCliente()!.email" name="email" required />
         </label>
         <div class="modal-actions">
-          <button type="submit" class="btn guardar">💾 Guardar</button>
+          <button type="submit" class="btn guardar" [disabled]="!clienteForm.form.valid">💾 Guardar</button>
           <button type="button" class="btn cerrar" (click)="closeModal()">❌ Cancelar</button>
         </div>
       </form>
