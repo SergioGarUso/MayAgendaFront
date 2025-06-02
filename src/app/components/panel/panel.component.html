@@ -1,10 +1,25 @@
-<h2>Resumen del día</h2>
+<div class="dashboard-layout">
 
-<div class="cards">
-  @for (item of resumen(); track item.tipo) {
-    <div class="card">
-      <h3>{{ item.tipo }}</h3>
-      <p>{{ item.cantidad }}</p>
-    </div>
-  }
+
+  <main class="content">
+    <h1>Citas de Hoy</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Cliente</th>
+          <th>Servicio</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (cita of citasHoy(); track cita.hora) {
+          <tr>
+            <td>{{ cita.hora }}</td>
+            <td>{{ cita.cliente }}</td>
+            <td>{{ cita.servicio }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </main>
 </div>

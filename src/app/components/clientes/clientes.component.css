@@ -1,44 +1,116 @@
-.clientes-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  animation: fadeInUp 0.4s ease-out;
+.clientes-page {
+  padding: 2rem 2rem 2rem 1rem;
+  background-color: #fff4f4;
 }
 
-.clientes-container h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
+:host {
+  display: block;
+  height: 100vh;
 }
 
-.clientes-container ul {
-  list-style: none;
-  padding-left: 0;
+h1 {
+  color: #4b2e2e;
+  margin-bottom: 1rem;
 }
 
-.clientes-container li {
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
+.add-btn {
+  background-color: #f4a9a9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.6rem 1rem;
   border-radius: 8px;
-  background-color: #f2f2f2;
-  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
-.clientes-container li:hover {
-  background-color: #e0e0e0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+thead {
+  background-color: #f4a9a9;
+  color: white;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fceeee;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  margin-right: 0.3rem;
+  cursor: pointer;
+}
+
+.btn.editar {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn.eliminar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  color: #4b2e2e;
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.4rem 0 1rem 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn.guardar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn.cerrar {
+  background-color: #6c757d;
+  color: white;
 }

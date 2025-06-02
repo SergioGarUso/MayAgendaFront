@@ -1,8 +1,52 @@
-<div class="clientes-container">
-  <h2>Gestión de Clientes</h2>
-  <ul>
-    @for (cliente of clientes(); track cliente.id) {
-      <li>{{ cliente.nombre }}</li>
-    }
-  </ul>
+<div class="clientes-page">
+  <h1>Gestión de Clientes</h1>
+  <button class="btn add-btn" (click)="openModal()">
+    ➕ Añadir Cliente
+  </button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (cliente of clientes(); track cliente.id) {
+        <tr>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>
+            <button class="btn editar" (click)="openModal(cliente)">✏️</button>
+            <button class="btn eliminar" (click)="eliminarCliente(cliente.id)">🗑️</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" *ngIf="modalVisible()">
+    <div class="modal">
+      <h2>{{ modalCliente()?.id === 0 ? 'Añadir Cliente' : 'Editar Cliente' }}</h2>
+      <form (ngSubmit)="guardarCliente()">
+        <label>Nombre:
+          <input [(ngModel)]="modalCliente()!.nombre" name="nombre" required />
+        </label>
+        <label>Teléfono:
+          <input [(ngModel)]="modalCliente()!.telefono" name="telefono" required />
+        </label>
+        <label>Email:
+          <input [(ngModel)]="modalCliente()!.email" name="email" required />
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="btn guardar">💾 Guardar</button>
+          <button type="button" class="btn cerrar" (click)="closeModal()">❌ Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

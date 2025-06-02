@@ -1,23 +1,49 @@
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
+.dashboard-layout {
+  display: flex;
+  height: 100%;
+  padding: 2rem 2rem 2rem 1rem;
+  background-color: #fff4f4;
+  box-sizing: border-box;
 }
 
-.card {
-  padding: 1.5rem;
+:host {
+  display: block;
+  height: 100vh;
+}
+.content {
+  flex: 1;
+}
+
+.content h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #4b2e2e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
   border-radius: 12px;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+thead {
+  background-color: #f4a9a9;
+  color: white;
 }
 
-.card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+th, td {
+  padding: 1rem;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fceeee;
+}
+
+tbody tr:hover {
+  background-color: #fae0e0;
 }

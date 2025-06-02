@@ -1,8 +1,55 @@
-<div class="citas-container">
-  <h2>Listado de Citas</h2>
-  <ul>
-    @for (cita of citas(); track cita.id) {
-      <li>{{ cita.cliente }} - {{ cita.fecha }}</li>
+<div class="citas-page">
+  <div class="cal-header">
+    <h1>Calendario de Citas</h1>
+    <div class="nav">
+      <button (click)="anteriorMes()">⬅️</button>
+      <span>{{ mesActual() | date: 'MMMM yyyy' }}</span>
+      <button (click)="siguienteMes()">➡️</button>
+    </div>
+  </div>
+
+  <div class="calendario-grid">
+    <div class="cabecera-dia" *ngFor="let dia of diasSemana">{{ dia }}</div>
+
+    @for (semana of calendario(); track semana) {
+      @for (dia of semana; track dia?.fecha || $index) {
+        <div class="celda-dia"
+             [class.hoy]="dia?.hoy"
+             [class.pasado]="dia?.pasado"
+             (click)="dia && abrirModal(dia.fecha)">
+          <div *ngIf="dia">
+            <div class="numero-dia">{{ dia.dia }}</div>
+            <ul>
+              @for (cita of dia.citas; track cita.hora) {
+                <li>{{ cita.hora }} - {{ cita.cliente }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
     }
-  </ul>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" *ngIf="modalVisible()">
+    <div class="modal">
+      <h2>Nueva Cita</h2>
+      <form (ngSubmit)="guardarCita()">
+        <p>Fecha: <strong>{{ nuevaCita().fecha }}</strong></p>
+        <label>Hora:
+          <input type="time" [(ngModel)]="nuevaCita().hora" name="hora" required />
+        </label>
+        <label>Cliente:
+          <input type="text" [(ngModel)]="nuevaCita().cliente" name="cliente" required />
+        </label>
+        <label>Servicio:
+          <input type="text" [(ngModel)]="nuevaCita().servicio" name="servicio" required />
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="btn guardar">💾 Guardar</button>
+          <button type="button" class="btn cerrar" (click)="modalVisible.set(false)">❌ Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

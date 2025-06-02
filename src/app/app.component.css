@@ -4,3 +4,7 @@
   flex-direction: column;
   gap: 2rem;
 }
+main {
+  margin-left: 220px; /* espacio reservado para la sidebar */
+  padding: 2rem;
+}
