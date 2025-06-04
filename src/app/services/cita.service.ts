@@ -3,29 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Cita {
-  id?: number;
+  id?: number;             // opcional porque lo genera el backend
   fecha: string;
   hora: string;
-  cliente?: string;
-  servicio?: string;
-  usuario: {
-    id: number;
-  };
+  cliente: string;
+  servicio: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CitaService {
-  private apiUrl = 'http://54.235.60.223:8080/api/citas';
+  private apiURL = 'http://54.235.60.223:8080/api/citas';
 
   constructor(private http: HttpClient) {}
 
-  getCitas(): Observable<Cita[]> {
-    return this.http.get<Cita[]>(this.apiUrl);
+  getAll(): Observable<Cita[]> {
+    return this.http.get<Cita[]>(this.apiURL);
   }
 
-  crearCita(cita: Cita): Observable<Cita> {
-    return this.http.post<Cita>(this.apiUrl, cita);
+  save(cita: Cita): Observable<Cita> {
+    return this.http.post<Cita>(this.apiURL, cita);
   }
 }
