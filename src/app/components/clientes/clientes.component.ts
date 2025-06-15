@@ -12,13 +12,22 @@ import { ClienteService, Cliente } from '../../services/cliente.service';
 })
 export class ClientesComponent {
   private clienteService = inject(ClienteService);
-
   clientes = signal<Cliente[]>([]);
   modalVisible = signal(false);
   modalCliente = signal<Cliente | null>(null);
 
+  modoMock = true; // ← cambia esto a false cuando la API esté funcionando
+
   constructor() {
-    this.cargarClientes();
+    if (this.modoMock) {
+      this.clientes.set([
+        { id: 1, nombre: 'Laura López', telefono: '678123456', email: 'laura@email.com' },
+        { id: 2, nombre: 'Carmen Ruiz', telefono: '666987654', email: 'carmen@email.com' },
+        { id: 3, nombre: 'Ana Torres', telefono: '679112233', email: 'ana@email.com' },
+      ]);
+    } else {
+      this.cargarClientes();
+    }
   }
 
   cargarClientes() {
